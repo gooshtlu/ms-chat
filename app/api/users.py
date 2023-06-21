@@ -18,3 +18,47 @@ async def add_users(user: UsersSchema):
         result = db_instance.create_document(user.dict())
         return "A New User is created"
 
+
+@router.get("/getuser/{user_id}")
+async def get_user_by_id(user_id):
+    result = db_instance.get_document(user_id)
+    return result
+
+
+@router.get("/check_email/{email_id}")
+async def check_email_id(email_id):
+    selector = {
+        "selector": {
+            "email_id": {
+                "$eq": str(email_id)
+            }
+        }
+    }
+    result = db_instance.find(selector)
+    return result
+
+
+@router.get("/get-user-by-id/{user_id}")
+async def get_user_by_id(user_id):
+    selector = {
+        "selector": {
+            "_id": {
+                "$eq": str(user_id)
+            }
+        }
+    }
+    result = db_instance.find(selector)
+    return result
+
+
+@router.get("/get-user-by-name/{username}")
+async def get_user_by_name(username):
+    selector = {
+        "selector": {
+            "username": {
+                "$eq": str(username)
+            }
+        }
+    }
+    result = db_instance.find(selector)
+    return result

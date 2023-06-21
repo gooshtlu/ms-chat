@@ -34,3 +34,13 @@ class CouchDB:
             return self.db[doc_id]
         except couchdb.ResourceNotFound:
             return None
+
+    def get_all_users(self):
+        try:
+            result = []
+            for doc_id in self.db:
+                result.append(self.db[doc_id])
+            return result
+        except couchdb.ResourceNotFound:
+            return None
+
