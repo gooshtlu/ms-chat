@@ -62,3 +62,9 @@ async def get_user_by_name(username):
     }
     result = db_instance.find(selector)
     return result
+
+
+@router.get("/get-all-users")
+async def get_all_users():
+    result = db_instance.get_all_users()
+    return result

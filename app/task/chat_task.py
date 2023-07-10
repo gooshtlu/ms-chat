@@ -49,8 +49,10 @@ def change_user_role(group_id, result, change_role_schema):
     my_keys = ['admins', 'managers', 'writers', 'readers']
     change_user_role_value = str(change_role_schema['change_user_role'])
     for key in my_keys:
+        print(key)
         if key in result and change_user_role_value in result[key]:
             result[key].remove(change_user_role_value)
+            print(result)
             key_values = {
                 'admin': 'admins',
                 'manager': 'managers',
@@ -64,5 +66,5 @@ def change_user_role(group_id, result, change_role_schema):
             except Exception as e:
                 print("An unexpected role was provided", e)
                 return False
-        else:
-            return False
+
+    return False

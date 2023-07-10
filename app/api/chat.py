@@ -115,6 +115,7 @@ async def change_role(change_role_schema: ChangeRoleSchema, group_id):
     change_role_schema_dict = change_role_schema.dict()
     user_type = change_role_schema_dict['user']
     result_type = type_of_user(result, user_type)
+    print(result_type)
     if result_type == "admin":
         result = change_user_role(group_id, result, change_role_schema_dict)
         if result:
